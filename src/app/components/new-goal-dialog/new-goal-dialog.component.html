@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>New Daily Goal</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Goal Name</mat-label>
+    <input matInput placeholder="Goal Name" #goalName>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Half Credit Milestone</mat-label>
+    <input matInput placeholder="Half Credit Milestone" #goalHalf>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Full Credit Milestone</mat-label>
+    <input matInput placeholder="Full Credit Milestone" #goalFull>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onSubmit(goalName.value, goalHalf.value, goalFull.value)" cdkFocusInitial>Ok</button>
+</div>
+

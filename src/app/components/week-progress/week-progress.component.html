@@ -1,3 +1,17 @@
-<p *ngFor="let item of weekProgress; index as i">
-    <button mat-button color="primary" (click)="changeStatus(i)">{{item}}</button>
-</p>
+<mat-grid-list cols="7" rowHeight="2:1" >
+    <mat-grid-tile *ngFor="let item of weekProgress; index as i">
+        <button mat-icon-button color="primary" (click)="changeStatus(i)">
+            <ng-container *ngIf="item === 0;else second">
+                <mat-icon svgIcon="goal_empty"></mat-icon>
+            </ng-container>
+            <ng-template #second>
+                <ng-container *ngIf="item === 1;else third">
+                    <mat-icon svgIcon="goal_half"></mat-icon>
+                </ng-container>
+            </ng-template>
+            <ng-template #third>
+                <mat-icon svgIcon="goal_full"></mat-icon>
+            </ng-template>
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>

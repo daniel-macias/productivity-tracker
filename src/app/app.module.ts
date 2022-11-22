@@ -8,19 +8,33 @@ import { MatButtonModule } from '@angular/material/button';
 import { GoalTrackerComponent } from './components/goal-tracker/goal-tracker.component';
 import { GoalComponent } from './components/goal/goal.component';
 import { WeekProgressComponent } from './components/week-progress/week-progress.component'
+import { MatIconModule } from "@angular/material/icon";
+import { HttpClientModule } from "@angular/common/http";
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NewGoalDialogComponent } from './components/new-goal-dialog/new-goal-dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoalTrackerComponent,
     GoalComponent,
-    WeekProgressComponent
+    WeekProgressComponent,
+    NewGoalDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

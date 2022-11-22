@@ -1,11 +1,23 @@
-<p>goal-tracker works!</p>
 <input type="text" placeholder="Enter goal name" #goal />
 <br>
 <br>
 <button (click)="addGoal(goal.value)">Add New Goal</button>
 <br>
 <br>
-<ul *ngFor="let item of list">
+<button mat-raised-button color="primary" (click)="openDialogNewGoal()">Add New Goal</button>
+<br>
+<br>
+<mat-grid-list cols="7" rowHeight="7:1">
+    <mat-grid-tile>Monday</mat-grid-tile>
+    <mat-grid-tile>Tuesday</mat-grid-tile>
+    <mat-grid-tile>Wednesday</mat-grid-tile>
+    <mat-grid-tile>Thursday</mat-grid-tile>
+    <mat-grid-tile>Friday</mat-grid-tile>
+    <mat-grid-tile>Saturday</mat-grid-tile>
+    <mat-grid-tile>Sunday</mat-grid-tile>
+</mat-grid-list>
+<br>
+<div *ngFor="let item of list">
     
     <app-goal [title]="item.name"></app-goal>
-</ul>
+</div>
