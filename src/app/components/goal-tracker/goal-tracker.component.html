@@ -1,1 +1,11 @@
 <p>goal-tracker works!</p>
+<input type="text" placeholder="Enter goal name" #goal />
+<br>
+<br>
+<button (click)="addGoal(goal.value)">Add New Goal</button>
+<br>
+<br>
+<ul *ngFor="let item of list">
+    
+    <app-goal [title]="item.name"></app-goal>
+</ul>
