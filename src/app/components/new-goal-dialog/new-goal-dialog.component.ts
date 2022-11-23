@@ -1,5 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+export interface UsersData {
+  title: string;
+  halfCredit: string;
+  fullCredit: string;
+}
 
 @Component({
   selector: 'app-new-goal-dialog',
@@ -7,21 +13,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./new-goal-dialog.component.scss']
 })
 export class NewGoalDialogComponent {
-  title:string = "";
-  halfCredit:string = "";
-  fullCredit:string = "";
-
   constructor(
     public dialogRef: MatDialogRef<NewGoalDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  createGoal(){
+    this.dialogRef.close({event: 'Create', data : this.data});
   }
 
-  onSubmit(goalName:string, goal_half:string, goal_full:string): void {
-    
-    this.dialogRef.close();
+  closeDialog(){
+    this.dialogRef.close({event:'Cancel'});
   }
 }

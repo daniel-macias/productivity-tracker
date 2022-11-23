@@ -15,6 +15,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NewGoalDialogComponent } from './components/new-goal-dialog/new-goal-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatGridListModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

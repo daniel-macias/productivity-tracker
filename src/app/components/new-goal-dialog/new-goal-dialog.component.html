@@ -2,19 +2,19 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Goal Name</mat-label>
-    <input matInput placeholder="Goal Name" #goalName>
+    <input matInput placeholder="Goal Name" [(ngModel)]="data.title">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Half Credit Milestone</mat-label>
-    <input matInput placeholder="Half Credit Milestone" #goalHalf>
+    <input matInput placeholder="Half Credit Milestone" [(ngModel)]="data.halfCredit">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Full Credit Milestone</mat-label>
-    <input matInput placeholder="Full Credit Milestone" #goalFull>
+    <input matInput placeholder="Full Credit Milestone" [(ngModel)]="data.fullCredit">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="onSubmit(goalName.value, goalHalf.value, goalFull.value)" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="closeDialog()">No Thanks</button>
+  <button mat-button [mat-dialog-close] cdkFocusInitial (click)="createGoal()">Ok</button>
 </div>
 

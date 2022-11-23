@@ -3,6 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { NewGoalDialogComponent } from '../new-goal-dialog/new-goal-dialog.component';
 
+export interface UsersData {
+  title: string;
+  halfCredit: string;
+  fullCredit: string;
+}
+
 @Component({
   selector: 'app-goal-tracker',
   templateUrl: './goal-tracker.component.html',
@@ -10,6 +16,7 @@ import { NewGoalDialogComponent } from '../new-goal-dialog/new-goal-dialog.compo
 })
 export class GoalTrackerComponent {
   list:any[]=[];
+  
   addGoal(item:string)
   {
     this.list.push({id:this.list.length, name:item})
@@ -18,10 +25,17 @@ export class GoalTrackerComponent {
   constructor(public dialog: MatDialog){}
   openDialogNewGoal()
   {
-    this.dialog.open(NewGoalDialogComponent,{
+    const dialogRef = this.dialog.open(NewGoalDialogComponent,{
       width:'300px',
-      data:'right click'
+      data:{title:"",halfCredit:"",fullCredit:""}
     })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result.event == 'Create'){
+        this.list.push({id:this.list.length, name:result.data.title})
+      }
+    });
   }
   
 }
