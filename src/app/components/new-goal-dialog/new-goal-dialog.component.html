@@ -2,15 +2,15 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Goal Name</mat-label>
-    <input matInput placeholder="Goal Name" [(ngModel)]="data.title">
+    <input matInput [(ngModel)]="data.title">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Half Credit Milestone</mat-label>
-    <input matInput placeholder="Half Credit Milestone" [(ngModel)]="data.halfCredit">
+    <textarea  matInput [(ngModel)]="data.halfCredit"></textarea>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Full Credit Milestone</mat-label>
-    <input matInput placeholder="Full Credit Milestone" [(ngModel)]="data.fullCredit">
+    <textarea matInput [(ngModel)]="data.fullCredit"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

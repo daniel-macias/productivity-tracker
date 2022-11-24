@@ -33,7 +33,11 @@ export class GoalTrackerComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result.event == 'Create'){
-        this.list.push({id:this.list.length, name:result.data.title})
+        this.list.push({
+          id:this.list.length,
+          name:result.data.title,
+          halfCredit:result.data.halfCredit,
+          fullCredit:result.data.fullCredit})
       }
     });
   }

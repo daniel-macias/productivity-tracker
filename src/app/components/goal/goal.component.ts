@@ -9,8 +9,8 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class GoalComponent implements OnInit{
   @Input() title:string = "";
-  halfCredit:string = "";
-  fullCredit:string = "";
+  @Input() halfCredit:string = "";
+  @Input() fullCredit:string = "";
   weekProgress:number[] = [0,0,0,0,0,0,0]
 
   constructor(

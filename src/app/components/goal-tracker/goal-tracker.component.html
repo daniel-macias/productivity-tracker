@@ -1,9 +1,3 @@
-<input type="text" placeholder="Enter goal name" #goal />
-<br>
-<br>
-<button (click)="addGoal(goal.value)">Add New Goal</button>
-<br>
-<br>
 <button mat-raised-button color="primary" (click)="openDialogNewGoal()">Add New Goal</button>
 <br>
 <br>
@@ -19,5 +13,5 @@
 <br>
 <div *ngFor="let item of list">
     
-    <app-goal [title]="item.name"></app-goal>
+    <app-goal [title]="item.name" [halfCredit]="item.halfCredit" [fullCredit]="item.fullCredit"></app-goal>
 </div>
