@@ -11,7 +11,25 @@ export class GoalComponent implements OnInit{
   @Input() title:string = "";
   @Input() halfCredit:string = "";
   @Input() fullCredit:string = "";
-  weekProgress:number[] = [0,0,0,0,0,0,0]
+  @Input() weekProgress:number[] = [0,0,0,0,0,0,0];
+
+  changeStatus(index:number)
+  {
+    switch(this.weekProgress[index]) { 
+      case 0: { 
+         this.weekProgress[index] = 1;
+         break; 
+      } 
+      case 1: { 
+        this.weekProgress[index] = 2;
+         break; 
+      }
+      case 2: { 
+        this.weekProgress[index] = 0; 
+        break; 
+      } 
+   } 
+  }
 
   constructor(
     private matIconRegistry: MatIconRegistry,

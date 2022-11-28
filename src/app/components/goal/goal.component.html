@@ -1,7 +1,9 @@
 <mat-grid-list cols="10" rowHeight="1:1" >
-    <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <mat-card>
-            <mat-card-header>{{title}}</mat-card-header>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+        <mat-card class="goal-card">
+            <mat-card-header>
+                <mat-card-title>{{title}}</mat-card-title>
+            </mat-card-header>
             <mat-card-content>
             <ul>
                 <li>
@@ -11,17 +13,35 @@
                     {{fullCredit}}
                 </li>
             </ul>
+            <mat-card-actions>
+                <button mat-icon-button color="primary" aria-label="Example icon button with a delete icon">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                <button mat-icon-button color="warn" aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+              </mat-card-actions>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="7" [rowspan]="1">
-        <ng-container>
-            <mat-icon svgIcon="goal_empty"></mat-icon>
-        </ng-container>
+    <mat-grid-tile [colspan]="1" [rowspan]="2" *ngFor="let item of weekProgress; index as i">
+        
+            <button mat-icon-button color="primary" (click)="changeStatus(i)">
+                <ng-container *ngIf="item === 0;else second">
+                    <mat-icon svgIcon="goal_empty"></mat-icon>
+                </ng-container>
+                <ng-template #second>
+                    <ng-container *ngIf="item === 1;else third">
+                        <mat-icon svgIcon="goal_half"></mat-icon>
+                    </ng-container>
+                </ng-template>
+                <ng-template #third>
+                    <mat-icon svgIcon="goal_full"></mat-icon>
+                </ng-template>
+            </button>
+        
     </mat-grid-tile>
 </mat-grid-list>
-
-<app-week-progress></app-week-progress>
 
 
 
