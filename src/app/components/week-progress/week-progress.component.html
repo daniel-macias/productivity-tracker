@@ -1,4 +1,5 @@
-<mat-grid-list cols="7" rowHeight="2:1" >
+<mat-grid-list cols="10" rowHeight="1:1" >
+    <mat-grid-tile [colspan]="3" [rowspan]="1"></mat-grid-tile>
     <mat-grid-tile *ngFor="let item of weekProgress; index as i">
         <button mat-icon-button color="primary" (click)="changeStatus(i)">
             <ng-container *ngIf="item === 0;else second">
