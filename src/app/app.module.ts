@@ -17,6 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import {MatCardModule} from '@angular/material/card';
     GoalTrackerComponent,
     GoalComponent,
     WeekProgressComponent,
-    NewGoalDialogComponent
+    NewGoalDialogComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

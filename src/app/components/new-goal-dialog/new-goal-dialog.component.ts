@@ -5,6 +5,7 @@ export interface UsersData {
   title: string;
   halfCredit: string;
   fullCredit: string;
+  type:number;
 }
 
 @Component({
@@ -20,6 +21,10 @@ export class NewGoalDialogComponent {
 
   createGoal(){
     this.dialogRef.close({event: 'Create', data : this.data});
+  }
+
+  editGoal(){
+    this.dialogRef.close({event: 'Edit', data : this.data});
   }
 
   closeDialog(){

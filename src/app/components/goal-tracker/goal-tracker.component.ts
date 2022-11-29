@@ -7,6 +7,7 @@ export interface UsersData {
   title: string;
   halfCredit: string;
   fullCredit: string;
+  type:string;
 }
 
 @Component({
@@ -16,7 +17,10 @@ export interface UsersData {
 })
 export class GoalTrackerComponent {
   list:any[]=[];
-  
+  title: string = "";
+  halfCredit: string = "";
+  fullCredit: string = "";
+
   addGoal(item:string)
   {
     this.list.push({id:this.list.length, name:item})
@@ -27,11 +31,12 @@ export class GoalTrackerComponent {
   {
     const dialogRef = this.dialog.open(NewGoalDialogComponent,{
       width:'300px',
-      data:{title:"",halfCredit:"",fullCredit:""}
+      data:{title:this.title,halfCredit:this.halfCredit,fullCredit:this.fullCredit,type:0}
     })
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      console.log(result);
       if(result.event == 'Create'){
         this.list.push({
           id:this.list.length,
@@ -40,6 +45,11 @@ export class GoalTrackerComponent {
           fullCredit:result.data.fullCredit})
       }
     });
+  }
+
+  editGoal(id:string, title:string, halfCredit:string, fullCredit:string)
+  {
+
   }
   
 }

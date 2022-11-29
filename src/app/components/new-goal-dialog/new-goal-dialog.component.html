@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>New Daily Goal</h1>
+<h1 mat-dialog-title>
+<ng-container *ngIf="data.type === 0;else second">
+  Create New Goal
+</ng-container>
+<ng-template #second>
+  <ng-container *ngIf="data.type === 1;">
+    Edit Goal
+  </ng-container>
+</ng-template></h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Goal Name</mat-label>
@@ -14,7 +22,14 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">No Thanks</button>
-  <button mat-button [mat-dialog-close] cdkFocusInitial (click)="createGoal()">Ok</button>
+  <button mat-button (click)="closeDialog()" color="warn">Cancel</button>
+  <ng-container *ngIf="data.type === 0;else otherButton">
+    <button mat-button [mat-dialog-close] cdkFocusInitial (click)="createGoal()" color="primary">Create</button>
+  </ng-container>
+  <ng-template #otherButton>
+    <ng-container *ngIf="data.type === 1;">
+      <button mat-button [mat-dialog-close] cdkFocusInitial (click)="editGoal()" color="primary">Save</button>
+    </ng-container>
+  </ng-template>
+  
 </div>
-

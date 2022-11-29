@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+import { MatDialog } from '@angular/material/dialog';
+import { NewGoalDialogComponent } from '../new-goal-dialog/new-goal-dialog.component';
+
 
 @Component({
   selector: 'app-goal',
@@ -8,6 +11,7 @@ import { DomSanitizer } from "@angular/platform-browser";
   styleUrls: ['./goal.component.scss']
 })
 export class GoalComponent implements OnInit{
+  @Input() id:string = "";
   @Input() title:string = "";
   @Input() halfCredit:string = "";
   @Input() fullCredit:string = "";
@@ -33,7 +37,8 @@ export class GoalComponent implements OnInit{
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public dialog: MatDialog
   ){
     this.matIconRegistry.addSvgIcon(
       "goal_full",
@@ -49,6 +54,18 @@ export class GoalComponent implements OnInit{
       "goal_empty",
       this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/goal_empty.svg")
     );
+  }
+
+  openDialogEditGoal(id:string, title:string, halfCredit:string, fullCredit:string)
+  {
+    const dialogRef = this.dialog.open(NewGoalDialogComponent,{
+      width:'300px',
+      data:{id: id, title:title,halfCredit:halfCredit,fullCredit:fullCredit,type:1}
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
   
   ngOnInit(): void {
