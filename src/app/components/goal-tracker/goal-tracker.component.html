@@ -12,6 +12,5 @@
     <mat-grid-tile>Sunday</mat-grid-tile>
 </mat-grid-list>
 <div *ngFor="let item of list">
-    
-    <app-goal [id]="item.id" [title]="item.name" [halfCredit]="item.halfCredit" [fullCredit]="item.fullCredit"></app-goal>
+    <app-goal [id]="item.id" [title]="item.name" [halfCredit]="item.halfCredit" [fullCredit]="item.fullCredit" (editGoalEvent)="editGoal($event)"></app-goal>
 </div>

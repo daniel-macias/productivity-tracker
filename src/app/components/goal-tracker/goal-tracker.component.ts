@@ -39,7 +39,7 @@ export class GoalTrackerComponent {
       console.log(result);
       if(result.event == 'Create'){
         this.list.push({
-          id:this.list.length,
+          id:this.list.length.toString(),
           name:result.data.title,
           halfCredit:result.data.halfCredit,
           fullCredit:result.data.fullCredit})
@@ -47,9 +47,16 @@ export class GoalTrackerComponent {
     });
   }
 
-  editGoal(id:string, title:string, halfCredit:string, fullCredit:string)
+  editGoal(result:any)
   {
-
+    //TODO CHANGE SEACH AND EDIT
+    this.list.forEach(element => {
+      if(element.id === result.data.id){
+        element.name = result.data.title;
+        element.halfCredit = result.data.halfCredit;
+        element.fullCredit = result.data.fullCredit;
+      }
+    });
   }
   
 }

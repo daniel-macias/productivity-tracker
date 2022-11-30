@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatDialog } from '@angular/material/dialog';
@@ -16,6 +16,8 @@ export class GoalComponent implements OnInit{
   @Input() halfCredit:string = "";
   @Input() fullCredit:string = "";
   @Input() weekProgress:number[] = [0,0,0,0,0,0,0];
+
+  @Output() editGoalEvent = new EventEmitter<any>();
 
   changeStatus(index:number)
   {
@@ -64,7 +66,9 @@ export class GoalComponent implements OnInit{
     })
 
     dialogRef.afterClosed().subscribe(result => {
+      result.id = id;
       console.log(result);
+      this.editGoalEvent.emit(result);
     });
   }
   
